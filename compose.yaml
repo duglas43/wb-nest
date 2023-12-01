@@ -1,5 +1,5 @@
 services:
-  service-desk-server:
+  wb-nest-server:
     build: .
     restart: always
     depends_on:
@@ -17,7 +17,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DBPASS}
       MYSQL_DATABASE: ${DBNAME}
-  
+
   phpmyadmin:
     image: phpmyadmin
     restart: always

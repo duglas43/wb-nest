@@ -4,8 +4,13 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-EXPOSE 5000
-ENTRYPOINT [ "node", "dist/main.js" ]
 
+FROM node:18-alpine AS production
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --only=production
+COPY --from=build /app/dist ./dist
+EXPOSE 5000
+CMD ["node", "dist/main"]
 
 
