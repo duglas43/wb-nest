@@ -21,9 +21,11 @@ services:
   phpmyadmin:
     image: phpmyadmin
     restart: always
+    env_file: .env
     ports:
       - 8080:80
     environment:
+      - PMA_HOST=mysql
       - PMA_USER=root
       - PMA_PASSWORD=${DBPASS}
 
